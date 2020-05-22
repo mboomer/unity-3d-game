@@ -22,10 +22,13 @@ public class Game : MonoBehaviour
 
         goal = FindObjectOfType<Goal>();
         Coins = goal.checkRequiredCoins();                              // get the required coins from the Goal object
-        
-        // get the level from UI value on the game object
-        levelText.text = string.Format("Level-{0}\nCollect {1} Coins", level, goal.checkRequiredCoins());       
-        // Debug.Log(levelText);
+
+        // value of level is taken from the UI value on the game object
+        // level-0 is main-menu which doesnt have to display the level Text
+        if (level > 0) {
+            levelText.text = string.Format("Level-{0}\nCollect {1} Coins", level, Coins);
+        }
+            // Debug.Log(levelText);
     }
 
     public void LoadLevel(string levelName) {
