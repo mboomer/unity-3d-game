@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
     void Start()
     {
         // Debug.Log("Next Level is : " + nextLevel);
-        nextLevel = level + 1;                                          // level by default is 0 as it wasnt assigned a value when it was defined   
+        nextLevel = level;                                              // level by default is 0 as it wasnt assigned a value when it was defined   
 
         goal = FindObjectOfType<Goal>();
         Coins = goal.checkRequiredCoins();                              // get the required coins from the Goal object
@@ -27,6 +27,10 @@ public class Game : MonoBehaviour
         // level-0 is main-menu which doesnt have to display the level Text
         if (level > 0) {
             levelText.text = string.Format("Level-{0}\nCollect {1} Coins", level, Coins);
+        } 
+        else
+        {
+            LoadLevel("Main-Menu");
         }
             // Debug.Log(levelText);
     }
